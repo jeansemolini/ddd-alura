@@ -1,5 +1,6 @@
 package br.com.alura.escola.aplicacao.aluno.matricular;
 
+import br.com.alura.escola.dominio.PublicadorDeEventos;
 import br.com.alura.escola.dominio.aluno.Aluno;
 import br.com.alura.escola.dominio.aluno.CPF;
 import br.com.alura.escola.infra.aluno.RepositorioDeAlunosEmMemoria;
@@ -12,7 +13,8 @@ public class MatricularAlunoTest {
     @Test
     void aluno() {
         RepositorioDeAlunosEmMemoria repositorio = new RepositorioDeAlunosEmMemoria();
-        MatricularAluno useCase = new MatricularAluno(repositorio);
+        PublicadorDeEventos publicador = new PublicadorDeEventos();
+        MatricularAluno useCase = new MatricularAluno(repositorio, publicador);
 
         MatricularAlunoDto dados = new MatricularAlunoDto(
                 "Fulano",
